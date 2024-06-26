@@ -6,12 +6,12 @@ Password Checks in PHP
 
 PHP Code:
 ```php
-    <?php
-    if (strlen($password) < 8) {
-        $message = "Password is too short (8 characters minimum)";
-        return false;
-    }
-    ?>
+<?php
+if (strlen($password) < 8) {
+    $message = "Password is too short (8 characters minimum)";
+    return false;
+}
+?>
 ```    
 
 This code checks if the password is at least 8 characters long.
@@ -26,17 +26,17 @@ This code checks if the password is at least 8 characters long.
 
 PHP Code:
 ```php
-    <?php
-    $complexity = 0;
-    if (preg_match("/([a-z]+)/", $password)) $complexity++;
-    if (preg_match("/([A-Z]+)/", $password)) $complexity++;
-    if (preg_match("/([0-9]+)/", $password)) $complexity++;
-    if (preg_match("/([^a-zA-Z0-9]+)/", $password)) $complexity++;
-    if ($complexity < 3) {
-        $message = "Password is not complex enough (use uppercase, lowercase and numbers)";
-        return false;
-    }
-    ?>
+<?php
+$complexity = 0;
+if (preg_match("/([a-z]+)/", $password)) $complexity++;
+if (preg_match("/([A-Z]+)/", $password)) $complexity++;
+if (preg_match("/([0-9]+)/", $password)) $complexity++;
+if (preg_match("/([^a-zA-Z0-9]+)/", $password)) $complexity++;
+if ($complexity < 3) {
+    $message = "Password is not complex enough (use uppercase, lowercase and numbers)";
+    return false;
+}
+?>
 ```    
 
 This code ensures the password contains at least three different types of characters: lowercase letters, uppercase letters, numbers, and special characters.
@@ -51,12 +51,12 @@ This code ensures the password contains at least three different types of charac
 
 PHP Code:
 ```php
-    <?php
-    if (stripos($password, $username) !== false) {
-        $message = "Password should not contain the username";
-        return false;
-    }
-    ?>
+<?php
+if (stripos($password, $username) !== false) {
+    $message = "Password should not contain the username";
+    return false;
+}
+?>
 ```    
 
 This code checks if the password contains the username.
@@ -72,15 +72,15 @@ This code checks if the password contains the username.
 
 PHP Code:
 ```php
-    <?php
-    $nameParts = explode(' ', $fullName);
-    foreach ($nameParts as $part) {
-        if (strlen($part) > 2 && stripos($password, $part) !== false) {
-            $message = "Password should not contain parts of the full name";
-            return false;
-        }
+<?php
+$nameParts = explode(' ', $fullName);
+foreach ($nameParts as $part) {
+    if (strlen($part) > 2 && stripos($password, $part) !== false) {
+        $message = "Password should not contain parts of the full name";
+        return false;
     }
-    ?>
+}
+?>
 ```    
 
 This code checks if the password contains any parts of the user's full name that are longer than two characters.
